@@ -38,18 +38,21 @@ export default {
       score: 0,
       gameOver: false,
       draggedColor: null,
-      draggableColors: this.generateRandomColors(),
-      dropGrid: this.generateRandomColors()
+      draggableColors: this.generateInitialColors(),
+      dropGrid: this.generateInitialColors()
     };
   },
   methods: {
-    generateRandomColors() {
+    generateInitialColors() {
       const colors = ["#ff6f61", "#00bcd4", "#4caf50", "#ffeb3b", "#9c27b0", "#ff9800", "#03a9f4", "#8bc34a", "#e91e63"];
-      let grid = [];
-      for (let i = 0; i < 3; i++) { // Ajustar el número de colores generados a 6
-        grid.push(colors[Math.floor(Math.random() * colors.length)]);
-      }
-      return grid;
+      return [
+        colors[Math.floor(Math.random() * colors.length)],
+        colors[Math.floor(Math.random() * colors.length)],
+        colors[Math.floor(Math.random() * colors.length)],
+        colors[Math.floor(Math.random() * colors.length)],
+        colors[Math.floor(Math.random() * colors.length)],
+        colors[Math.floor(Math.random() * colors.length)]
+      ];
     },
     startDrag(event, color) {
       this.draggedColor = color;
@@ -89,8 +92,8 @@ export default {
     restartGame() {
       this.score = 0;
       this.gameOver = false;
-      this.draggableColors = this.generateRandomColors();
-      this.dropGrid = this.generateRandomColors();
+      this.draggableColors = this.generateInitialColors();
+      this.dropGrid = this.generateInitialColors();
     }
   }
 };
