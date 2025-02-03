@@ -6,6 +6,7 @@ import HelloWorld from './components/GameBoard.vue';
   <div id="app">
    
     <GameBoard />
+    
   </div>
 </template>
 

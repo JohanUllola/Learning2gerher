@@ -38,18 +38,18 @@ export default {
       score: 0,
       gameOver: false,
       draggedColor: null,
-      draggableColors: this.generateInitialColors(),
-      dropGrid: this.generateInitialColors()
+      draggableColors: this.generateInitialColors(3),
+      dropGrid: this.generateInitialColors(3)
     };
   },
   methods: {
-    generateInitialColors() {
+    generateInitialColors(count) {
       const colors = ["#ff6f61", "#00bcd4", "#4caf50", "#ffeb3b", "#9c27b0", "#ff9800", "#03a9f4", "#8bc34a", "#e91e63"];
-      return [
-        colors[Math.floor(Math.random() * colors.length)],
-        colors[Math.floor(Math.random() * colors.length)],        
-        colors[Math.floor(Math.random() * colors.length)]
-      ];
+      let generatedColors = [];
+      while (generatedColors.length < count) {
+        generatedColors.push(colors[Math.floor(Math.random() * colors.length)]);
+      }
+      return generatedColors;
     },
     startDrag(event, color) {
       this.draggedColor = color;
@@ -89,8 +89,8 @@ export default {
     restartGame() {
       this.score = 0;
       this.gameOver = false;
-      this.draggableColors = this.generateInitialColors();
-      this.dropGrid = this.generateInitialColors();
+      this.draggableColors = this.generateInitialColors(3);
+      this.dropGrid = this.generateInitialColors(3);
     }
   }
 };
